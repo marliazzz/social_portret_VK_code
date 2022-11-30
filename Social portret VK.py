@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
 
 import requests
 from tqdm.notebook import tqdm
@@ -13,9 +8,9 @@ import time
 url = 'https://api.vk.com/method/friends.get'
 
 # Формируем параметры запроса к VK API
-params = {'access_token':'ваш токен пользователя ВК',
+params = {'access_token':'ваш токен пользователя ВК', #токен пользователя берем с https://vk.com/dev/access_token?f=1.%20Ключ%20доступа%20пользователя
           'v':'5.131',
-          'id':'-id пользователя, соц. портрет которого хотим создать',
+          'id':'-id пользователя, соц. портрет которого хотим создать', #id подаем через МИНУС, получаем id нужного нам пользователя через https://vk.com/linkapp
           'count':100,
           'offset':0}
 
@@ -35,8 +30,8 @@ allgroup = []
 
 url = 'https://api.vk.com/method/groups.get' 
 for ids in tqdm(_ids):
-    params = {'access_token':'ваш токен пользователя ВК',
-          'v':'ваша версия ВК',
+    params = {'access_token':'ваш токен пользователя ВК', #еще раз вставляем токен пользователя
+          'v':'ваша версия ВК',#здесь указываем вашу версию ВК
           'user_id': ids,
           'extended':1,
           'fields':'description'}
@@ -48,11 +43,11 @@ for ids in tqdm(_ids):
 resultat = []
 for er in ind['response']['items']:
     resultat.append(er['description'])
-resultat #получаем список группс их описанием друзей юзера
+resultat #получаем список групп друзей юзера с их описанием 
         
 
 
-# In[ ]:
+
 
 
 
